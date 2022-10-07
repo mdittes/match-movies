@@ -25,13 +25,16 @@ function Login(  ) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: username,
+          username: username,
           password: password
         }),
       })
       .then(res => res.json())
-      .then((user) => console.log(user))
-      navigate('/Profile')
+      .then((user) => {
+        console.log(user)
+        navigate('/Profile')
+      })
+      
     }
   
     if (authMode === "signin") {

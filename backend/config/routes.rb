@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
 
-  resources :users, only: [:create, :index, :show]
+  # resources :users, only: [:create, :index, :show]
   resources :genres, only: [:index, :show]
   resources :matches, only: [:index, :show, :create, :update, :destroy]
   resources :genre_likes, only: [:index, :show, :create, :update, :destroy]
 
 
-  post '/login', to: 'auth#create'
+  post '/login', to: 'users#login'
   post '/register', to: 'users#signup'
-  get '/current_user', to: 'auth#show'
   get '/profile', to: 'users#profile'
   post '/signup', to: 'users#signup'
   patch '/update', to: 'users#update'

@@ -2,9 +2,19 @@ import React, {useState, useEffect} from 'react'
 
 function Profile() {
   
-  // useEffect(() => {
-  //   fetch(`http://localhost:3000/users/${id}`)
-  // }, [])
+  useEffect(() => {
+    let token = localStorage.getItem("token")
+    fetch("http://localhost:3000/profile", {
+      headers: {
+        "token": `${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log("PROFILE",data)
+    })
+  }, [])
 
   return (
     <div>
