@@ -1,44 +1,58 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :update, :destroy]
   skip_before_action :authorized, only: [:create]
 
-  # def index
-  #   @users = User.all
-  #   render json: @users
-  # end
+def index
+  @users = User.all
 
-  def profile
-    @user = User.find(params[:id])
-    render json: {user: current_user}
-  end
+  render json: @users
+end
 
-  def signup
-    @user = User.create!(username: params[:username], password: params[:password], email: params[:email], image_url: params[:image_url])
-    if @user.valid?
-        @user.save
-        @token = encode_token(@user)
-        render json: { user: @user, jwt: @token }
-    else
-        render json: { error: 'failed to create user' }, status: :not_acceptable
-    end
-  end
+def show
+  render json: @user
+end
 
-  def update
-    @user = User.find(params[:id])
-    @user.update(user_params)
-    render json: @user
+def login
+  user = User.find_by(username: params[:username]).try(:authenticate, params[:password])
+  if user
+    token = generate_token(user.id)
+    render json: {user:user, token:token}
+  else
+    render json: {error:"wrong login info"}, status: 401
   end
+end
 
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-    head :no_content
+def profile
+  token = request.headers["token"]
+  user_id = decode_token(token)
+  if user_id
+    render json: User.find(user_id)
+  else
+    render json: {error: "401 incorrect token"}, status: 401
   end
-  
-  private
+end
+
+def signup
+  user = User.create!(username: params[:username], email: params[:email], password: params[:password])
+  render json: user
+end
+
+def destroy
+  @user.destroy
+end
+
+private
+
+  def set_user
+    token = request.headers["token"]
+    user_id = decode_token(token)
+    puts 'hello'
+    puts user_id
+    @user = User.find_by(id: user_id)
+  end
 
   def user_params
-    params.permit(:username, :password, :email, :image_url)
-
+    params.require(:username).permit(:email, :password_digest)
   end
 
 end
