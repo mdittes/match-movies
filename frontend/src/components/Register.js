@@ -1,56 +1,55 @@
-import React from 'react'
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import '../styled/Register.css'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../styled/Register.css';
 
 function Register() {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [picture, setPicture] = useState("")
-  const [bio, setBio] = useState("")
-  let [authMode, setAuthMode] = useState("signin")
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [profilePicture, setProfilePicture] = useState("");
+    const [errors, setErrors] = useState([]);
+    const navigate = useNavigate();
 
-  const changeAuthMode = () => {
-    setAuthMode(authMode === "signin" ? "signup" : "signin")
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    fetch("http://localhost:3000/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: username,
-        password: password,
-        image_url: picture,
-        bio: bio
-      }),
-    })
-    .then(res => res.json())
-    .then((user) => console.log(user))
-    navigate('/Profile')
-  }
-
-  const navigate = useNavigate();
-    const routeChange = () => {
-      let path = '/Login';
-      navigate(path);
+    function handleSubmit(e) {
+        e.preventDefault();
+        fetch("http://localhost:3000/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                username,
+                password,
+                email,
+                profile_picture: profilePicture
+            })
+        })
+        .then((r) => r.json())
+        .then((data) => {
+            if (data.errors) {
+                setErrors(data.errors)
+            } else {
+                localStorage.setItem("token", data.token);
+                navigate("/profile");
+            }
+        });
     }
-
-  if (authMode === "signin") {
+    
     return (
         <div className="Auth-form-container">
-          <form className="Auth-form">
+          <form onSubmit={handleSubmit} className="Auth-form">
             <div className="Auth-form-content">
-              <h3 className="Auth-form-title">Sign Up!</h3>
-              <div className="text-center">
-                Already registered?{" "}
-                <span style={{cursor:'pointer'}} className="link-primary" onClick={routeChange}>
-                  Sign In
-                </span>
-              </div>
+              <h3 className="Auth-form-title">Register</h3>
+              <div className="form-group mt-3">
+                <label>Email Address</label>
+                <input
+                    type="email"
+                    className="form-control mt-1"
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter email"
+                />
+                </div>
               <div className="form-group mt-3">
                 <label>Username</label>
                 <input
@@ -59,45 +58,36 @@ function Register() {
                   className="form-control mt-1"
                   placeholder="Name"
                   onChange={(e) => setUsername(e.target.value)}
-                />
+                  />
               </div>
               <div className="form-group mt-3">
                 <label>Password</label>
                 <input
                   type="password"
                   className="form-control mt-1"
-                  placeholder="Password"
                   onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter password"
                 />
               </div>
               <div className="form-group mt-3">
                 <label>Profile Picture</label>
                 <input
-                  type="photo"
-                  className="form-control mt-1"
-                  placeholder="Upload Image URL Here"
-                  onChange={(e) => setPicture(e.target.value)}
+                    type="text"
+                    className="form-control mt-1"
+                    onChange={(e) => setProfilePicture(e.target.value)}
+                    placeholder="Enter profile picture URL"
                 />
-              </div>
-              <div className="form-group mt-3">
-                <label>Bio</label>
-                <input
-                  type="bio"
-                  className="form-control mt-1"
-                  placeholder="Tell us about yourself"
-                  onChange={(e) => setBio(e.target.value)}
-                />
-              </div>
+                </div>
               <div className="d-grid gap-2 mt-3">
-              {/* <button class="btn btn-default" style={{backgroundColor: "#529F8C", color: "#F6C6BF" }} type="submit" >Submit</button> */}
-              <button class="btn btn-default" style={{backgroundColor: "#529F8C", color: "#F6C6BF" }} type="submit" onSubmit={handleSubmit} >Submit</button>
+              <button class="btn btn-default" style={{backgroundColor: "#529F8C", color: "#F6C6BF" }} type="submit"  >Submit</button>
               </div>
             </div>
           </form>
+          {errors.map((error) => (
+              <p style={{color: "red"}} key={error}>{error}</p>
+            ))}
         </div>
-        
-      )
-    }
-  }
+    );
+}
 
-  export default Register
+export default Register;
