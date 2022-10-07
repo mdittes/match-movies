@@ -1,0 +1,367 @@
+  [1m[35m (259.0ms)[0m  [1m[35mCREATE DATABASE "match_movies_development" ENCODING = 'unicode'[0m
+  [1m[35m (102.5ms)[0m  [1m[35mCREATE DATABASE "match_movies_test" ENCODING = 'unicode'[0m
+  [1m[35m (28.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1593559837716621705)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePosts (20221006230554)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "title" character varying, "content" character varying, "user_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221006230554"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUsers (20221006230729)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221006230729"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-10-06 23:19:21.709509"], ["updated_at", "2022-10-06 23:19:21.709509"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1593559837716621705)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/users" for ::1 at 2022-10-06 19:19:32 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+Started POST "/users" for ::1 at 2022-10-06 19:25:20 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+Started POST "/users" for ::1 at 2022-10-06 19:29:16 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+Started GET "/users" for ::1 at 2022-10-06 19:29:25 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/users" for ::1 at 2022-10-06 19:32:31 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/users" for ::1 at 2022-10-06 19:35:40 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started POST "/users" for ::1 at 2022-10-06 19:35:46 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+Started POST "/users" for ::1 at 2022-10-06 19:36:47 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+Started POST "/users" for ::1 at 2022-10-06 19:37:19 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+Started POST "/users" for ::1 at 2022-10-06 19:39:02 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+Started POST "/users" for ::1 at 2022-10-06 19:39:47 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+Started POST "/users" for ::1 at 2022-10-06 19:40:00 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+Started POST "/users" for ::1 at 2022-10-06 19:41:17 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+Started POST "/users" for ::1 at 2022-10-06 19:42:29 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+Started POST "/users" for ::1 at 2022-10-06 19:42:44 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+Started POST "/users" for ::1 at 2022-10-06 19:43:07 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+Started POST "/users" for ::1 at 2022-10-06 19:43:08 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+Started POST "/signup" for ::1 at 2022-10-06 19:43:40 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/signup"):
+  
+Started POST "/signup" for ::1 at 2022-10-06 19:43:59 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/signup"):
+  
+Started POST "/signup" for ::1 at 2022-10-06 19:44:00 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/signup"):
+  
+Started POST "/signup" for 127.0.0.1 at 2022-10-06 19:44:18 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/signup"):
+  
+Started POST "/signup" for 127.0.0.1 at 2022-10-06 19:44:28 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/signup"):
+  
+Started POST "/signup" for 127.0.0.1 at 2022-10-06 19:44:29 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/signup"):
+  
+Started POST "/signup" for 127.0.0.1 at 2022-10-06 19:45:32 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/signup"):
+  
+Started POST "/users" for 127.0.0.1 at 2022-10-06 19:46:10 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+Started POST "/signup" for 127.0.0.1 at 2022-10-06 19:46:32 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/signup"):
+  
+Started POST "/signup" for 127.0.0.1 at 2022-10-06 19:46:51 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/signup"):
+  
+Started POST "/signup" for 127.0.0.1 at 2022-10-06 19:47:53 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/signup"):
+  
+Started POST "/signup" for 127.0.0.1 at 2022-10-06 19:48:19 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/signup"):
+  
+Started POST "/signup" for 127.0.0.1 at 2022-10-06 19:48:20 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/signup"):
+  
+Started POST "/users" for 127.0.0.1 at 2022-10-06 19:48:29 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+Started POST "/users" for 127.0.0.1 at 2022-10-06 19:48:32 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked host: localhost
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked host: localhost
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked host: localhost
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked host: localhost
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked host: localhost
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked host: localhost
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked host: localhost
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (2.9ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "asdsad"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-06 23:52:11.486623"], ["updated_at", "2022-10-06 23:52:11.486623"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked host: localhost
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked host: localhost
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked host: localhost
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked host: localhost
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked host: localhost
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.9ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Matt"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-06 23:54:57.704399"], ["updated_at", "2022-10-06 23:54:57.704399"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked host: localhost
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked host: localhost
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked host: localhost
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked host: localhost
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked host: localhost
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked host: localhost
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked host: localhost
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked host: localhost
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked host: localhost
+Started POST "/users" for ::1 at 2022-10-06 19:59:22 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+Started POST "/signup" for ::1 at 2022-10-06 19:59:30 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/signup"):
+  
+Started POST "/signup" for ::1 at 2022-10-06 20:00:44 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/signup"):
+  
+Started POST "/signup" for ::1 at 2022-10-06 20:01:03 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/signup"):
+  
+Started POST "/signup" for ::1 at 2022-10-06 20:01:22 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/signup"):
+  
+Started POST "/api/v1/signup" for ::1 at 2022-10-06 20:02:41 -0400
+  
+AbstractController::ActionNotFound (The action 'signup' could not be found for Api::V1::UsersController):
+  
+actionpack (7.0.4) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.4) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.4) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+activerecord (7.0.4) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (7.0.4) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/api/v1/signup" for ::1 at 2022-10-06 20:03:09 -0400
+Processing by Api::V1::UsersController#signup as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 24ms (Views: 6.3ms | ActiveRecord: 3.3ms | Allocations: 4977)
+
+
+Started POST "/signup" for ::1 at 2022-10-06 20:03:49 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/signup"):
+  
+Started POST "/signup" for ::1 at 2022-10-06 20:04:25 -0400
+  
+SyntaxError (/Users/marcuscrabtree/Development/match-movies/config/routes.rb:10: syntax error, unexpected `end', expecting end-of-input
+  end
+  ^~~
+):
+  
+config/routes.rb:10: syntax error, unexpected `end', expecting end-of-input
+config/routes.rb:10: syntax error, unexpected `end', expecting end-of-input
+Started POST "/signup" for ::1 at 2022-10-06 20:04:38 -0400
+  
+ActionController::RoutingError (uninitialized constant UsersController
+Did you mean?  UserSerializer):
+  
+Started POST "/signup" for ::1 at 2022-10-06 20:04:53 -0400
+  
+ActionController::RoutingError (uninitialized constant UsersController
+Did you mean?  UserSerializer):
+  
+Started POST "/signup" for ::1 at 2022-10-06 20:06:02 -0400
+Processing by UsersController#signup as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 14ms (Views: 2.2ms | ActiveRecord: 2.8ms | Allocations: 3045)
+
+
+Started GET "/users" for ::1 at 2022-10-06 20:19:22 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for UsersController):
+  
+actionpack (7.0.4) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.4) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.4) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+activerecord (7.0.4) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (7.0.4) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/profile" for ::1 at 2022-10-06 20:19:34 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/profile"):
+  
+Started GET "/users" for ::1 at 2022-10-06 20:20:06 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 24ms (Views: 5.9ms | ActiveRecord: 3.1ms | Allocations: 4922)
+
+
