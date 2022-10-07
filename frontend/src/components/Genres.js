@@ -4,7 +4,6 @@ import GenreCard from './GenreCard';
 
 function Genres( ) {
     const [genres, setGenres] = useState([])
-    const []
 
     useEffect(() => {
         fetch("http://localhost:3000/genres")

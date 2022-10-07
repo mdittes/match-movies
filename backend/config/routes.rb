@@ -5,12 +5,11 @@ Rails.application.routes.draw do
   resources :matches, only: [:index, :show, :create, :update, :destroy]
   resources :genre_likes, only: [:index, :show, :create, :update, :destroy]
 
-
   post '/login', to: 'users#login'
   post '/register', to: 'users#signup'
   get '/profile', to: 'users#profile'
   post '/signup', to: 'users#signup'
-  patch '/update', to: 'users#update'
+  patch '/users/:id', to: 'users#update'
   delete '/destroy', to: 'users#destroy'
 
 end

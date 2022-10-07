@@ -4,6 +4,7 @@ import '../styled/Genres.css'
 function GenreCard( {genre} ) {
     const [inProfile, setInProfile] = useState("")
 
+
     function handleAddToProfileClick() {
         setInProfile((inProfile) => {
             fetch("http://localhost:3000/genre_likes", {
