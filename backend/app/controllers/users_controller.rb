@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
-  skip_before_action :authorized, only: [:signup]
+  before_action :set_user, only: [:show,  :destroy]
+  # skip_before_action :authorized, only: [:signup]
 
 def index
   @users = User.all
-
   render json: @users
 end
 
@@ -13,32 +12,45 @@ def show
 end
 
 def login
-  user = User.find_by(username: params[:username]).try(:authenticate, params[:password])
-  if user
-    token = generate_token(user.id)
-    render json: {user:user, token:token}
+  user = User.find_by(username: params[:username])
+  if user && user.authenticate(params[:password])
+    payload = {
+      "user_id": user.id,
+    }
+      token = encode_token(payload)
+    render json: {user: UserSerializer.new(user), jwt: token}
   else
-    render json: {error:"wrong login info"}, status: 401
+    render json: {error: 'That user could not be found'}, status: 401
   end
 end
 
+
 def profile
   token = request.headers["token"]
-  user_id = decode_token(token)
-  if user_id
-    render json: User.find(user_id)
+  payload = decode_token(token)[0]
+  if payload
+    render json: User.find(payload["user_id"])
   else
     render json: {error: "401 incorrect token"}, status: 401
   end
 end
 
 def signup
-  user = User.create!(username: params[:username], email: params[:email], password: params[:password])
-  render json: user
+  user = User.create!(username: params[:username], email: params[:email], password: params[:password], image_url: params[:image_url])
+  if user
+    payload = {
+      "user_id": user.id,
+    }
+      token = encode_token(payload)
+    render json: {user: user,jwt:token}
+  else
+    render json: {error: "cant create user"}
+  end
 end
 
 def destroy
   @user.destroy
+  render json: @user
 end
 
 private
@@ -46,9 +58,7 @@ private
   def set_user
     token = request.headers["token"]
     user_id = decode_token(token)
-    puts 'hello'
-    puts user_id
-    @user = User.find_by(id: user_id)
+    @user = User.find(user_id)
   end
 
   def user_params
