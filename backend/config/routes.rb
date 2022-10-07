@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   resources :genres, only: [:index, :show]
   resources :matches, only: [:index, :show, :create, :update, :destroy]
   resources :genre_likes, only: [:index, :show, :create, :update, :destroy]
-  
+
 
   post '/login', to: 'auth#create'
+  post '/register', to: 'users#signup'
   get '/current_user', to: 'auth#show'
   get '/profile', to: 'users#profile'
   post '/signup', to: 'users#signup'
