@@ -12,7 +12,7 @@ function Register() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        fetch("http://localhost:3000/register", {
+        fetch("http://localhost:3000/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -22,7 +22,7 @@ function Register() {
                 username,
                 password,
                 email,
-                profile_picture: profilePicture
+                image_url: profilePicture
             })
         })
         .then((r) => r.json())
@@ -30,7 +30,8 @@ function Register() {
             if (data.errors) {
                 setErrors(data.errors)
             } else {
-                localStorage.setItem("token", data.token);
+                localStorage.setItem("token", data.jwt);
+                console.log(data.user)
                 navigate("/profile");
             }
         });

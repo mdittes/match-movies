@@ -1,3 +1,4 @@
+<<<<<<< HEAD
   [1m[35m (259.0ms)[0m  [1m[35mCREATE DATABASE "match_movies_development" ENCODING = 'unicode'[0m
   [1m[35m (102.5ms)[0m  [1m[35mCREATE DATABASE "match_movies_test" ENCODING = 'unicode'[0m
   [1m[35m (28.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
@@ -2323,3 +2324,1136 @@ Completed 401 Unauthorized in 47ms (Views: 12.8ms | ActiveRecord: 30.7ms | Alloc
   [1m[36mUser Create (9.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "Marcus"], ["password_digest", "[FILTERED]"], ["email", "marcus@matt.com"], ["image_url", "exists"], ["created_at", "2022-10-07 13:17:44.712357"], ["updated_at", "2022-10-07 13:17:44.712357"]]
   [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mCOMMIT[0m
   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+=======
+>>>>>>> 9607cb295eb4ea7977b036d0fb1b05abbc59b74e
+Started POST "/register" for ::1 at 2022-10-07 09:27:57 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#signup as JSON
+  Parameters: {"username"=>"Marcus", "password"=>"[FILTERED]", "email"=>"marcuscrabtree4@gmail.com", "profile_picture"=>"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png", "user"=>{"username"=>"Marcus", "email"=>"marcuscrabtree4@gmail.com"}}
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:36:in `signup'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "Marcus"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36:in `signup'
+  [1m[36mTRANSACTION (13.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:36:in `signup'
+Completed 422 Unprocessable Entity in 930ms (ActiveRecord: 23.7ms | Allocations: 19709)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Username has already been taken):
+  
+app/controllers/users_controller.rb:36:in `signup'
+Started POST "/login" for ::1 at 2022-10-07 09:29:54 -0400
+Processing by AuthController#create as */*
+  Parameters: {"name"=>"Marcus", "password"=>"[FILTERED]", "auth"=>{"name"=>"Marcus", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :name. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007fe65403e570>, params: {"name"=>"Marcus", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"name"=>"Marcus", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 401 Unauthorized in 11ms (Views: 5.4ms | ActiveRecord: 0.5ms | Allocations: 1958)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 09:30:16 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.35ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 6ms (Views: 1.6ms | ActiveRecord: 0.8ms | Allocations: 1325)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 09:30:16 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 5ms (Views: 1.1ms | ActiveRecord: 1.1ms | Allocations: 1295)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 09:30:58 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 7ms (Views: 1.4ms | ActiveRecord: 3.6ms | Allocations: 1302)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 09:30:58 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 6ms (Views: 2.2ms | ActiveRecord: 0.8ms | Allocations: 1283)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 09:51:54 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (98.41ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 277ms (Views: 150.2ms | ActiveRecord: 35.4ms | Allocations: 4242)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 09:51:54 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 7ms (Views: 3.3ms | ActiveRecord: 0.4ms | Allocations: 1283)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 09:53:39 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.49ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 36ms (Views: 11.0ms | ActiveRecord: 3.4ms | Allocations: 1283)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 09:53:39 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 39ms (Views: 1.6ms | ActiveRecord: 10.8ms | Allocations: 4222)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 09:54:28 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 9ms (Views: 3.9ms | ActiveRecord: 2.0ms | Allocations: 1302)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 09:54:28 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 20ms (Views: 4.2ms | ActiveRecord: 0.2ms | Allocations: 1283)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 09:54:33 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 8ms (Views: 1.9ms | ActiveRecord: 1.9ms | Allocations: 1284)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 09:54:33 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.23ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 6ms (Views: 2.2ms | ActiveRecord: 2.1ms | Allocations: 1283)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 09:55:21 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 16ms (Views: 7.5ms | ActiveRecord: 0.4ms | Allocations: 1283)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 09:55:21 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 5ms (Views: 2.3ms | ActiveRecord: 0.2ms | Allocations: 1283)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 09:56:19 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mGenre Load (3.1ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 1]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 2]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (5.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 3]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 4]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 5]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 6]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (3.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 7]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 8]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 9]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (13.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 10]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (620.49ms)
+Completed 200 OK in 734ms (Views: 653.4ms | ActiveRecord: 67.1ms | Allocations: 50738)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 09:56:20 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mGenre Load (0.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 1]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 2]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 3]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 4]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 5]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 6]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 7]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 8]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 9]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 10]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (22.86ms)
+Completed 200 OK in 27ms (Views: 23.6ms | ActiveRecord: 3.1ms | Allocations: 14194)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 09:56:33 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mGenre Load (2.1ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 1]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 2]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 3]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 4]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 5]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 6]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 7]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 8]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 9]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 10]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (40.67ms)
+Completed 200 OK in 58ms (Views: 39.0ms | ActiveRecord: 17.0ms | Allocations: 14194)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 09:56:34 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mGenre Load (1.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 1]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 2]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 3]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 4]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 5]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 6]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (69.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 7]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 8]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 9]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 10]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (143.94ms)
+Completed 200 OK in 155ms (Views: 75.7ms | ActiveRecord: 78.9ms | Allocations: 14193)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 10:01:57 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mGenre Load (2.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 1]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 2]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 3]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 4]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 5]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 6]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 7]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 8]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 9]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 10]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (851.37ms)
+Completed 200 OK in 877ms (Views: 860.3ms | ActiveRecord: 13.8ms | Allocations: 14196)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 10:01:58 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mGenre Load (0.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 1]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 2]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 3]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 4]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 5]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 6]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 7]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 8]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 9]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 10]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (350.57ms)
+Completed 200 OK in 366ms (Views: 361.9ms | ActiveRecord: 3.9ms | Allocations: 14193)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 10:02:07 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mGenre Load (0.4ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 1]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 2]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 3]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 4]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 5]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 6]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 7]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 8]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 9]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 10]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (44.03ms)
+Completed 200 OK in 51ms (Views: 38.6ms | ActiveRecord: 12.6ms | Allocations: 14194)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 10:02:07 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 1]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 2]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 3]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 4]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 5]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 6]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 7]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 8]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 9]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (79.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 10]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (177.76ms)
+Completed 200 OK in 184ms (Views: 93.0ms | ActiveRecord: 91.1ms | Allocations: 14194)
+
+
+Started POST "/login" for ::1 at 2022-10-07 10:09:39 -0400
+Processing by AuthController#create as */*
+  Parameters: {"email"=>"matt@marcus.com", "name"=>"Marcus", "password"=>"[FILTERED]", "auth"=>{"email"=>"matt@marcus.com", "name"=>"Marcus", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :email, :name. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007fe6526f5000>, params: {"email"=>"matt@marcus.com", "name"=>"Marcus", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"email"=>"matt@marcus.com", "name"=>"Marcus", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.35ms)
+Completed 401 Unauthorized in 273ms (Views: 9.2ms | ActiveRecord: 34.2ms | Allocations: 4518)
+
+
+Started POST "/login" for ::1 at 2022-10-07 10:10:06 -0400
+Processing by AuthController#create as */*
+  Parameters: {"email"=>"marcusmatt@marcus.com", "name"=>"Marcus", "password"=>"[FILTERED]", "auth"=>{"email"=>"marcusmatt@marcus.com", "name"=>"Marcus", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :email, :name. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007fe65263ef58>, params: {"email"=>"marcusmatt@marcus.com", "name"=>"Marcus", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"email"=>"marcusmatt@marcus.com", "name"=>"Marcus", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 401 Unauthorized in 13ms (Views: 3.4ms | ActiveRecord: 4.5ms | Allocations: 1444)
+
+
+Started POST "/login" for ::1 at 2022-10-07 10:11:51 -0400
+Processing by AuthController#create as */*
+  Parameters: {"email"=>"mattmarcus@marcus.com", "name"=>"marcus", "password"=>"[FILTERED]", "auth"=>{"email"=>"mattmarcus@marcus.com", "name"=>"marcus", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :email, :name. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007fe652c80510>, params: {"email"=>"mattmarcus@marcus.com", "name"=>"marcus", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"email"=>"mattmarcus@marcus.com", "name"=>"marcus", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+  [1m[36mUser Load (13.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.32ms)
+Completed 401 Unauthorized in 70ms (Views: 20.4ms | ActiveRecord: 16.7ms | Allocations: 1444)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 10:20:40 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (12.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mGenre Load (1.7ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 1]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 2]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 3]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 4]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 5]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 6]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 7]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 8]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 9]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 10]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (71.26ms)
+Completed 200 OK in 483ms (Views: 472.0ms | ActiveRecord: 109.8ms | Allocations: 17100)
+
+
+Started GET "/genres" for ::1 at 2022-10-07 10:20:40 -0400
+Processing by GenresController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 1]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 2]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 3]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 4]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 5]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 6]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 7]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 8]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 9]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "genre_likes" ON "users"."id" = "genre_likes"."user_id" WHERE "genre_likes"."genre_id" = $1[0m  [["genre_id", 10]]
+[active_model_serializers]   ↳ app/controllers/genres_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (141.05ms)
+Completed 200 OK in 164ms (Views: 155.4ms | ActiveRecord: 7.4ms | Allocations: 14194)
+
+
+Started POST "/login" for ::1 at 2022-10-07 10:22:37 -0400
+Processing by AuthController#create as */*
+  Parameters: {"name"=>"marcus", "password"=>"[FILTERED]", "auth"=>{"name"=>"marcus", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :name. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007fe6542f94b8>, params: {"name"=>"marcus", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"name"=>"marcus", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.89ms)
+Completed 401 Unauthorized in 37ms (Views: 10.4ms | ActiveRecord: 0.8ms | Allocations: 1437)
+
+
+Started POST "/login" for ::1 at 2022-10-07 10:22:55 -0400
+Processing by AuthController#create as */*
+  Parameters: {"name"=>"Marcus", "password"=>"[FILTERED]", "auth"=>{"name"=>"Marcus", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :name. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007fe6549dcfa0>, params: {"name"=>"Marcus", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"name"=>"Marcus", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 401 Unauthorized in 18ms (Views: 5.5ms | ActiveRecord: 2.2ms | Allocations: 1434)
+
+
+Started POST "/login" for ::1 at 2022-10-07 10:23:12 -0400
+Processing by AuthController#create as */*
+  Parameters: {"name"=>"Marcus", "password"=>"[FILTERED]", "auth"=>{"name"=>"Marcus", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :name. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007fe654984508>, params: {"name"=>"Marcus", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"name"=>"Marcus", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 401 Unauthorized in 7ms (Views: 3.7ms | ActiveRecord: 0.8ms | Allocations: 1435)
+
+
+Started POST "/login" for ::1 at 2022-10-07 10:23:32 -0400
+Processing by AuthController#create as */*
+  Parameters: {"name"=>"Marucs", "password"=>"[FILTERED]", "auth"=>{"name"=>"Marucs", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :name. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007fe6542914a8>, params: {"name"=>"Marucs", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"name"=>"Marucs", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+  [1m[36mUser Load (3.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 401 Unauthorized in 19ms (Views: 2.2ms | ActiveRecord: 5.4ms | Allocations: 1434)
+
+
+Started POST "/login" for ::1 at 2022-10-07 10:23:46 -0400
+Processing by AuthController#create as */*
+  Parameters: {"name"=>"Marcus", "password"=>"[FILTERED]", "auth"=>{"name"=>"Marcus", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :name. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007fe65423b710>, params: {"name"=>"Marcus", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"name"=>"Marcus", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Completed 401 Unauthorized in 14ms (Views: 4.2ms | ActiveRecord: 3.0ms | Allocations: 1434)
+
+
+Started POST "/login" for ::1 at 2022-10-07 10:24:12 -0400
+Processing by AuthController#create as */*
+Completed 400 Bad Request in 24ms (ActiveRecord: 0.0ms | Allocations: 123)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: auth):
+  
+app/controllers/auth_controller.rb:26:in `user_login_params'
+app/controllers/auth_controller.rb:5:in `create'
+Started POST "/login" for ::1 at 2022-10-07 10:24:41 -0400
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"Marcus", "password"=>"[FILTERED]", "auth"=>{"username"=>"Marcus", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Marcus"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 401 Unauthorized in 391ms (Views: 5.9ms | ActiveRecord: 1.6ms | Allocations: 2781)
+
+
+Started POST "/login" for ::1 at 2022-10-07 10:24:46 -0400
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"Marcus", "password"=>"[FILTERED]", "auth"=>{"username"=>"Marcus", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Marcus"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.34ms)
+Completed 200 OK in 521ms (Views: 3.0ms | ActiveRecord: 0.6ms | Allocations: 3053)
+
+
+Started POST "/login" for ::1 at 2022-10-07 10:24:59 -0400
+Processing by AuthController#create as */*
+  Parameters: {"name"=>"Marcus", "password"=>"[FILTERED]", "auth"=>{"name"=>"Marcus", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :name. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007fe652eae800>, params: {"name"=>"Marcus", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"name"=>"Marcus", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 12ms (Views: 2.8ms | ActiveRecord: 3.5ms | Allocations: 1434)
+
+
+Started POST "/login" for ::1 at 2022-10-07 10:31:56 -0400
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"Marcus", "password"=>"[FILTERED]", "auth"=>{"username"=>"Marcus", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Marcus"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+Completed 500 Internal Server Error in 878ms (ActiveRecord: 31.2ms | Allocations: 11514)
+
+
+  
+TypeError (no implicit conversion of String into Integer):
+  
+app/controllers/application_controller.rb:33:in `[]'
+app/controllers/application_controller.rb:33:in `current_user'
+app/controllers/auth_controller.rb:11:in `create'
+Started POST "/login" for ::1 at 2022-10-07 10:32:37 -0400
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"Marcus", "password"=>"[FILTERED]", "auth"=>{"username"=>"Marcus", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Marcus"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+Completed 500 Internal Server Error in 653ms (ActiveRecord: 88.2ms | Allocations: 8871)
+
+
+  
+TypeError (no implicit conversion of Symbol into Integer):
+  
+app/controllers/application_controller.rb:33:in `current_user'
+app/controllers/auth_controller.rb:11:in `create'
+Started POST "/login" for ::1 at 2022-10-07 10:33:17 -0400
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"Marcus", "password"=>"[FILTERED]", "auth"=>{"username"=>"Marcus", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Marcus"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+Completed 500 Internal Server Error in 546ms (ActiveRecord: 5.3ms | Allocations: 8805)
+
+
+  
+TypeError (no implicit conversion of String into Integer):
+  
+app/controllers/application_controller.rb:34:in `[]'
+app/controllers/application_controller.rb:34:in `current_user'
+app/controllers/auth_controller.rb:11:in `create'
+Started POST "/login" for ::1 at 2022-10-07 10:33:40 -0400
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"Marcus", "password"=>"[FILTERED]", "auth"=>{"username"=>"Marcus", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Marcus"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+Completed 500 Internal Server Error in 640ms (ActiveRecord: 3.9ms | Allocations: 8896)
+
+
+  
+TypeError (no implicit conversion of String into Integer):
+  
+app/controllers/application_controller.rb:35:in `[]'
+app/controllers/application_controller.rb:35:in `current_user'
+app/controllers/auth_controller.rb:11:in `create'
+Started POST "/login" for ::1 at 2022-10-07 10:34:12 -0400
+  
+ArgumentError (Before process_action callback :authorized has not been defined):
+  
+app/controllers/auth_controller.rb:2:in `<class:AuthController>'
+app/controllers/auth_controller.rb:1:in `<main>'
+Started POST "/login" for ::1 at 2022-10-07 10:34:26 -0400
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"Marcus", "password"=>"[FILTERED]", "auth"=>{"username"=>"Marcus", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Marcus"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+Completed 500 Internal Server Error in 612ms (ActiveRecord: 4.2ms | Allocations: 8894)
+
+
+  
+TypeError (no implicit conversion of String into Integer):
+  
+app/controllers/application_controller.rb:35:in `[]'
+app/controllers/application_controller.rb:35:in `current_user'
+app/controllers/auth_controller.rb:11:in `create'
+Started POST "/login" for ::1 at 2022-10-07 10:35:40 -0400
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"Marcus", "password"=>"[FILTERED]", "auth"=>{"username"=>"Marcus", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Marcus"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+Completed 500 Internal Server Error in 485ms (ActiveRecord: 6.3ms | Allocations: 8801)
+
+
+  
+TypeError (no implicit conversion of Symbol into Integer):
+  
+app/controllers/application_controller.rb:35:in `current_user'
+app/controllers/auth_controller.rb:11:in `create'
+Started POST "/login" for ::1 at 2022-10-07 10:42:33 -0400
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"Marcus", "password"=>"[FILTERED]", "user"=>{"username"=>"Marcus"}}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 22.6ms | Allocations: 140)
+
+
+  
+TypeError (no implicit conversion of String into Integer):
+  
+app/controllers/application_controller.rb:33:in `[]'
+app/controllers/application_controller.rb:33:in `current_user'
+app/controllers/application_controller.rb:36:in `logged_in?'
+app/controllers/application_controller.rb:22:in `authorized'
+Started POST "/login" for ::1 at 2022-10-07 10:43:21 -0400
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"Marcus", "password"=>"[FILTERED]", "user"=>{"username"=>"Marcus"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:33:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:33:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 5ms (Views: 2.1ms | ActiveRecord: 7.4ms | Allocations: 1518)
+
+
+Started POST "/login" for ::1 at 2022-10-07 10:43:25 -0400
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"Marcus", "password"=>"[FILTERED]", "user"=>{"username"=>"Marcus"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:33:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:33:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 6ms (Views: 2.6ms | ActiveRecord: 0.5ms | Allocations: 1293)
+
+
+Started POST "/login" for ::1 at 2022-10-07 10:44:00 -0400
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"Marcus", "password"=>"[FILTERED]", "user"=>{"username"=>"Marcus"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Marcus"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 200 OK in 623ms (Views: 1.9ms | ActiveRecord: 6.3ms | Allocations: 2599)
+
+
+Started GET "/profile" for ::1 at 2022-10-07 10:44:57 -0400
+Processing by UsersController#profile as */*
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.0ms | Allocations: 2036)
+
+
+  
+NoMethodError (undefined method `decode_token' for #<UsersController:0x00000000039b98>
+Did you mean?  decoded_token
+               encode_token):
+  
+app/controllers/users_controller.rb:30:in `profile'
+Started GET "/profile" for ::1 at 2022-10-07 10:45:12 -0400
+Processing by UsersController#profile as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (NULL)[0m
+  ↳ app/controllers/users_controller.rb:32:in `profile'
+Completed 404 Not Found in 35ms (ActiveRecord: 7.1ms | Allocations: 7298)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find all Users with 'id': ({"user_id"=>21}, {"alg"=>"HS256"}) (found 0 results, but was looking for 2).):
+  
+app/controllers/users_controller.rb:32:in `profile'
+Started GET "/profile" for ::1 at 2022-10-07 10:46:14 -0400
+Processing by UsersController#profile as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (NULL)[0m
+  ↳ app/controllers/users_controller.rb:32:in `profile'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.4ms | Allocations: 773)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find all Users with 'id': ({"user_id"=>21}, {"alg"=>"HS256"}) (found 0 results, but was looking for 2).):
+  
+app/controllers/users_controller.rb:32:in `profile'
+Started GET "/profile" for ::1 at 2022-10-07 10:46:45 -0400
+Processing by UsersController#profile as */*
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms | Allocations: 2341)
+
+
+  
+NameError (undefined local variable or method `decoded_token' for #<UsersController:0x000000000422c0>
+Did you mean?  decode_token
+               encode_token):
+  
+app/controllers/application_controller.rb:28:in `user_id'
+app/controllers/users_controller.rb:33:in `profile'
+Started GET "/profile" for ::1 at 2022-10-07 10:47:16 -0400
+Processing by UsersController#profile as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:34:in `profile'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.35ms)
+Completed 200 OK in 39ms (Views: 3.5ms | ActiveRecord: 4.6ms | Allocations: 9072)
+
+
+Started GET "/profile" for ::1 at 2022-10-07 10:47:22 -0400
+Processing by UsersController#profile as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:34:in `profile'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.25ms)
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 841)
+
+
+Started POST "/signup" for ::1 at 2022-10-07 10:48:41 -0400
+Processing by UsersController#signup as */*
+  Parameters: {"username"=>"testaccount", "password"=>"[FILTERED]", "email"=>"Marcus@marcus.com", "image_url"=>"https://m.media-amazon.com/images/M/MV5BMTk4Mjk3NTAzOF5BMl5BanBnXkFtZTgwMDAwOTA4MDI@._V1_.jpg", "user"=>{"username"=>"testaccount", "email"=>"Marcus@marcus.com", "image_url"=>"https://m.media-amazon.com/images/M/MV5BMTk4Mjk3NTAzOF5BMl5BanBnXkFtZTgwMDAwOTA4MDI@._V1_.jpg"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:41:in `signup'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "testaccount"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `signup'
+  [1m[36mUser Create (40.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "testaccount"], ["password_digest", "[FILTERED]"], ["email", "Marcus@marcus.com"], ["image_url", nil], ["created_at", "2022-10-07 14:48:42.403738"], ["updated_at", "2022-10-07 14:48:42.403738"]]
+  ↳ app/controllers/users_controller.rb:41:in `signup'
+  [1m[36mTRANSACTION (7.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:41:in `signup'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.2ms)
+Completed 200 OK in 489ms (Views: 0.5ms | ActiveRecord: 81.5ms | Allocations: 3299)
+
+
+Started POST "/l" for ::1 at 2022-10-07 10:48:52 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/l"):
+  
+Started POST "/login" for ::1 at 2022-10-07 10:48:58 -0400
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"testaccount", "password"=>"[FILTERED]", "user"=>{"username"=>"testaccount"}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testaccount"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.19ms)
+Completed 200 OK in 287ms (Views: 1.2ms | ActiveRecord: 1.2ms | Allocations: 957)
+
+
+Started POST "/login" for ::1 at 2022-10-07 10:50:23 -0400
+Processing by UsersController#login as */*
+  Parameters: {"name"=>"Marcus", "password"=>"[FILTERED]", "user"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.27ms)
+Completed 401 Unauthorized in 21ms (Views: 3.2ms | ActiveRecord: 8.3ms | Allocations: 861)
+
+
+Started POST "/login" for ::1 at 2022-10-07 10:51:39 -0400
+Processing by UsersController#login as */*
+  Parameters: {"name"=>"Marcus", "password"=>"[FILTERED]", "user"=>{}}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 401 Unauthorized in 7ms (Views: 0.5ms | ActiveRecord: 1.7ms | Allocations: 726)
+
+
+Started POST "/login" for ::1 at 2022-10-07 10:52:10 -0400
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"Marcus", "password"=>"[FILTERED]", "user"=>{"username"=>"Marcus"}}
+  [1m[36mUser Load (6.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Marcus"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.3ms)
+Completed 200 OK in 692ms (Views: 0.8ms | ActiveRecord: 10.4ms | Allocations: 3797)
+
+
+Started GET "/profile" for ::1 at 2022-10-07 10:54:33 -0400
+Processing by UsersController#profile as */*
+Completed 404 Not Found in 20ms (ActiveRecord: 0.0ms | Allocations: 130)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/users_controller.rb:32:in `profile'
+Started GET "/profile" for ::1 at 2022-10-07 10:54:33 -0400
+Processing by UsersController#profile as */*
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 130)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/users_controller.rb:32:in `profile'
+Started GET "/profile" for ::1 at 2022-10-07 10:55:39 -0400
+Processing by UsersController#profile as */*
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 132)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/users_controller.rb:32:in `profile'
+Started GET "/profile" for ::1 at 2022-10-07 10:56:32 -0400
+Processing by UsersController#profile as */*
+  Parameters: {"user"=>{}}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 132)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/users_controller.rb:32:in `profile'
+Started GET "/profile" for ::1 at 2022-10-07 10:56:44 -0400
+Processing by UsersController#profile as */*
+  Parameters: {"user"=>{}}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 132)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/users_controller.rb:32:in `profile'
+Started GET "/profile" for ::1 at 2022-10-07 10:56:54 -0400
+Processing by UsersController#profile as */*
+  Parameters: {"user"=>{}}
+Completed 404 Not Found in 2ms (ActiveRecord: 0.0ms | Allocations: 132)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/users_controller.rb:32:in `profile'
+Started GET "/profile" for ::1 at 2022-10-07 10:56:57 -0400
+Processing by UsersController#profile as */*
+  Parameters: {"user"=>{}}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 132)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/users_controller.rb:32:in `profile'
+Started GET "/profile" for ::1 at 2022-10-07 10:56:57 -0400
+Processing by UsersController#profile as */*
+  Parameters: {"user"=>{}}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 132)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/users_controller.rb:32:in `profile'
+Started POST "/login" for ::1 at 2022-10-07 10:57:47 -0400
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"Marcus", "password"=>"[FILTERED]", "user"=>{"username"=>"Marcus"}}
+  [1m[36mUser Load (7.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Marcus"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.25ms)
+Completed 200 OK in 521ms (Views: 1.5ms | ActiveRecord: 7.9ms | Allocations: 778)
+
+
+Started GET "/profile" for ::1 at 2022-10-07 10:57:48 -0400
+Processing by UsersController#profile as */*
+  Parameters: {"user"=>{}}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 132)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/users_controller.rb:32:in `profile'
+Started GET "/profile" for ::1 at 2022-10-07 10:57:48 -0400
+Processing by UsersController#profile as */*
+  Parameters: {"user"=>{}}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 132)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/users_controller.rb:32:in `profile'
+Started POST "/login" for ::1 at 2022-10-07 10:58:32 -0400
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"Marcus", "password"=>"[FILTERED]", "user"=>{"username"=>"Marcus"}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Marcus"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.24ms)
+Completed 200 OK in 359ms (Views: 1.6ms | ActiveRecord: 0.9ms | Allocations: 777)
+
+
+Started GET "/profile" for ::1 at 2022-10-07 10:58:33 -0400
+Processing by UsersController#profile as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:32:in `profile'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (1.45ms)
+Completed 200 OK in 19ms (Views: 3.1ms | ActiveRecord: 0.5ms | Allocations: 933)
+
+
+Started GET "/profile" for ::1 at 2022-10-07 10:58:33 -0400
+Processing by UsersController#profile as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:32:in `profile'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.21ms)
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 791)
+
+
+Started GET "/profile" for ::1 at 2022-10-07 10:58:37 -0400
+Processing by UsersController#profile as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:32:in `profile'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.32ms)
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.3ms | Allocations: 791)
+
+
+Started GET "/profile" for ::1 at 2022-10-07 10:58:37 -0400
+Processing by UsersController#profile as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:32:in `profile'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.22ms)
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.3ms | Allocations: 791)
+
+
+Started POST "/signup" for ::1 at 2022-10-07 11:03:50 -0400
+Processing by UsersController#signup as JSON
+  Parameters: {"username"=>"Matt", "password"=>"[FILTERED]", "email"=>"matt@matt.com", "image_url"=>"asfasdf", "user"=>{"username"=>"Matt", "email"=>"matt@matt.com", "image_url"=>"asfasdf"}}
+  [1m[36mTRANSACTION (18.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:39:in `signup'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "Matt"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:39:in `signup'
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:39:in `signup'
+Completed 422 Unprocessable Entity in 847ms (ActiveRecord: 36.9ms | Allocations: 4194)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Username has already been taken):
+  
+app/controllers/users_controller.rb:39:in `signup'
+Started GET "/profile" for ::1 at 2022-10-07 11:03:51 -0400
+Processing by UsersController#profile as */*
+  Parameters: {"user"=>{}}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 138)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/users_controller.rb:32:in `profile'
+Started GET "/profile" for ::1 at 2022-10-07 11:03:51 -0400
+Processing by UsersController#profile as */*
+  Parameters: {"user"=>{}}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 132)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/users_controller.rb:32:in `profile'
+Started GET "/profile" for ::1 at 2022-10-07 11:04:00 -0400
+Processing by UsersController#profile as */*
+  Parameters: {"user"=>{}}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 132)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/users_controller.rb:32:in `profile'
+Started GET "/profile" for ::1 at 2022-10-07 11:04:00 -0400
+Processing by UsersController#profile as */*
+  Parameters: {"user"=>{}}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 132)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/users_controller.rb:32:in `profile'
+Started POST "/signup" for ::1 at 2022-10-07 11:04:45 -0400
+Processing by UsersController#signup as JSON
+  Parameters: {"username"=>"mismndisd", "password"=>"[FILTERED]", "email"=>"kajsdksndkj@gmail.com", "image_url"=>"123dad", "user"=>{"username"=>"mismndisd", "email"=>"kajsdksndkj@gmail.com", "image_url"=>"123dad"}}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:39:in `signup'
+  [1m[36mUser Exists? (3.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "mismndisd"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:39:in `signup'
+  [1m[36mUser Create (2.9ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "mismndisd"], ["password_digest", "[FILTERED]"], ["email", "kajsdksndkj@gmail.com"], ["image_url", "123dad"], ["created_at", "2022-10-07 15:04:45.723126"], ["updated_at", "2022-10-07 15:04:45.723126"]]
+  ↳ app/controllers/users_controller.rb:39:in `signup'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:39:in `signup'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.01ms)
+Completed 200 OK in 447ms (Views: 7.5ms | ActiveRecord: 7.7ms | Allocations: 3000)
+
+
+Started GET "/profile" for ::1 at 2022-10-07 11:04:45 -0400
+Processing by UsersController#profile as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (6.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:32:in `profile'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.41ms)
+Completed 200 OK in 241ms (Views: 227.3ms | ActiveRecord: 6.0ms | Allocations: 2514)
+
+
+Started GET "/profile" for ::1 at 2022-10-07 11:04:46 -0400
+Processing by UsersController#profile as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:32:in `profile'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.31ms)
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 791)
+
+
+Started GET "/profile" for ::1 at 2022-10-07 11:05:23 -0400
+Processing by UsersController#profile as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:32:in `profile'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.29ms)
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.2ms | Allocations: 791)
+
+
+Started GET "/profile" for ::1 at 2022-10-07 11:05:23 -0400
+Processing by UsersController#profile as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:32:in `profile'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.29ms)
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 791)
+
+

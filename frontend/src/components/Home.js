@@ -5,6 +5,7 @@ import {useNavigate} from 'react-router-dom'
 function Home() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [user, setUser] = useState({})
 
   const navigate = useNavigate();
   
@@ -21,13 +22,17 @@ function Home() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: username,
+        username: username,
         password: password
       }),
     })
     .then(res => res.json())
-    .then((user) => console.log(user))
-    navigate('/Profile')
+    .then((data) => {
+      setUser(data.user)
+      localStorage.setItem("token", data.jwt)
+      navigate('/Profile')
+    })
+ 
   }
 
   return (
