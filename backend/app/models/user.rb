@@ -10,7 +10,7 @@ class User < ApplicationRecord
     validates :username, uniqueness: { case_sensitive: false }
     validates :username, presence: true
     validates :email, presence: true
-    validates :password, presence: true, confirmation: true
+
 
     #method returns array of genres' names that user likes (or entire genre instance if you remove ".name")
     def by_genre

@@ -4,16 +4,18 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Container from 'react-bootstrap/Container';
 import { Route, Routes, Link } from "react-router-dom";
 import Home from './Home';
-import About from "./About";
 import Matches from "./Matches";
 import Genres from "./Genres";
 import Login from "./Login";
 import Register from "./Register";
 import Profile from "./Profile";
-import Logout from "./Logout";
+import { useNavigate } from 'react-router-dom';
 
 
 function NavbarComp() {
+
+    const navigate = useNavigate();
+    
     return (
       <div>
             <Navbar
@@ -31,11 +33,7 @@ function NavbarComp() {
                     <NavDropdown title="Manage" id="basic-nav-dropdown">
                     <NavDropdown.Item as={Link} to="Register">Register</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="Login">Login</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="Logout">Logout</NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item as={Link} to="About">
-                        About
-                    </NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
                 </Navbar.Collapse>
@@ -48,8 +46,6 @@ function NavbarComp() {
                 <Route path="/genres" element={<Genres/>} />
                 <Route path="/register" element={<Register/>} />
                 <Route path="/login" element={<Login/>} />
-                <Route path="/logout" element={<Logout/>} />
-                <Route path="/about" element={<About/>} />
             </Routes>
         </div>
     )
