@@ -1,8 +1,46 @@
 import React, {useState, useEffect} from 'react'
+import {useNavigate} from 'react-router-dom'
 
 function Profile() {
+  const [user, setUser] = useState({})
+
+  const navigate = useNavigate();
   
-  useEffect(() => {
+
+  function handleLogOut () {
+    localStorage.removeItem("token")
+    navigate("/home")
+    setUser("")
+  }
+
+  function updateUserProfilePicture (e) {
+    e.preventDefault()
+    let token = localStorage.getItem("token")
+    let imageString = e.target[0].value
+    fetch(`http://localhost:3000/users/${user.id}`, {
+      method: "PATCH",
+      headers: {
+        token: token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        image_url: imageString
+      })
+    })
+    .then(res => res.json())
+    .then((user) => {
+      console.log(user)
+      setUser(user)
+    })
+  }
+
+
+
+        
+
+  
+  
+  useEffect(() => { 
     let token = localStorage.getItem("token")
     fetch("http://localhost:3000/profile", {
       headers: {
@@ -12,33 +50,36 @@ function Profile() {
     })
     .then(res => res.json())
     .then(data => {
-      console.log("PROFILE",data)
+      console.log(data)
+      setUser(data)
     })
   }, [])
 
+  
+
   return (
-    <div>
-      <h2>Profile</h2>
-        <section class="h-100 gradient-form" background-color="#eee;">
-          <div class="container py-5 h-100" >
-            <div class="row d-flex justify-content-center align-items-center h-100">
-             <div class="col-xl-10">
-              <div class="card rounded-3 text-black">
-                <div class="row g-0">
-                  <div class="col-lg-6" style={{backgroundColor: "#529F8C" }}>
-                    <div class="card-body p-md-5 mx-md-4" style={{backgroundColor: "#529F8C", color: "#F6C6BF" }}>
-                      <div class="text-center"></div>
-                        <img src="https://i.imgur.com/6hzdhTQ.jpg" width="250px" alt="logo"/>
-                      </div>
-                    </div>
+    <div class="container">
+	    <div class="row">
+		    <div class="col-md-6">
+          <h4 class="text-center"><strong>Your Profile</strong></h4>
+              <div class="profile-card-2"><img src={user.image_url} class="img img-responsive" alt=""/>
+                <div class="profile-name">Username: {user.username}</div>
+                  <div class="profile-username">Email Address: {user.email}</div>
+                  <form onSubmit={updateUserProfilePicture}> 
+                  <input
+                    type="text"
+                    className="form-control mt-1"
+                    placeholder="Enter profile picture URL"
+                />
+                  <button class="btn btn-default" style={{backgroundColor: "#529F8C", color: "#F6C6BF" }} type="submit">Update Profile Picture</button>
+                  </form>
+                  <button class="btn btn-primary btn-block" style={{backgroundColor: "#529F8C", color: "#F6C6BF" }} type="submit" onClick={handleLogOut}>Log Out</button>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-    </div>
+                  </div>
+                  </div>
+                  </div>
   )
 }
+
 
 export default Profile

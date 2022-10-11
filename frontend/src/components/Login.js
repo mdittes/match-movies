@@ -3,19 +3,12 @@ import '../styled/Login.css'
 import {useNavigate} from 'react-router-dom'
 
 function Login(  ) {
-    let [authMode, setAuthMode] = useState("signin")
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-
+    
     const navigate = useNavigate();
-    // const routeChange = () => {
-    //   let path = '/Profile';
-    //   navigate(path);
-    // }
-  
-    const changeAuthMode = () => {
-      setAuthMode(authMode === "signin" ? "signup" : "signin")
-    }
+
+
 
     function handleSubmit(e) {
       e.preventDefault();
@@ -37,7 +30,6 @@ function Login(  ) {
       
     }
   
-    if (authMode === "signin") {
       return (
         <div className="Auth-form-container">
           <form onSubmit={handleSubmit} className="Auth-form">
@@ -69,7 +61,6 @@ function Login(  ) {
           </form>
         </div>
       )
-    }
 }
 
 export default Login

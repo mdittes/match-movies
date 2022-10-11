@@ -24,6 +24,22 @@ def login
   end
 end
 
+def update
+  token = request.headers["token"]
+  payload = decode_token(token)[0]
+  if payload
+    user = User.find(payload["user_id"])
+    user.image_url = params[:image_url]
+    if user.save
+      render json: user
+    else
+      render json: user.errors
+    end
+  else
+    render json: {error: "401 incorrect token"}, status: 401
+  end
+end
+
 
 def profile
   token = request.headers["token"]
@@ -62,7 +78,7 @@ private
   end
 
   def user_params
-    params.require(:username).permit(:email, :password_digest)
+    params.require(:username).permit(:email, :password_digest, :image_url)
   end
 
 end
